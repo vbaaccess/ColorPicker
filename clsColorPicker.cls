@@ -16,6 +16,7 @@ Option Explicit
 
 Private Const CurrentModName = "clsColorPicker"
 Private Const INIT_STRING_EVENT = "[Event Procedure]"
+Private Const ColorPickerFormName = "frmColorPicker"
 
 Private objHandle
 
@@ -101,7 +102,7 @@ Public Sub ShowColorPickerForm()
         WindowMode = acWindowNormal  ' Default
     End If
     
-    DoCmd.OpenForm "frmColorPicker", , , , , WindowMode, objHandle
+   DoCmd.OpenForm ColorPickerFormName, , , , , WindowMode, objHandle
 End Sub
 
 Public Sub INIT_frmColorPicker(ByRef setObjForm As Form)
