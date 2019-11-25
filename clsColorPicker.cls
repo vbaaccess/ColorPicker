@@ -27,6 +27,7 @@ Private arrColors() As Long
 Dim pomArray(505, 3) As Long
 
 Private m_DialogWindowMode As Boolean
+Private m_LastSelectedColorClearAfterRead As Boolean
 Private m_SelectedColor As Long
 Private WithEvents ctrEtyColor As Label
 
@@ -36,6 +37,7 @@ Private WithEvents ctrPreviewLabel2 As Label
 Private Sub Class_Initialize()
     '--- constructor ---
     m_DialogWindowMode = True
+    m_LastSelectedColorClearAfterRead = False
 End Sub
 
 Public Property Get DialogWindowMode() As Boolean
@@ -48,6 +50,9 @@ End Property
 
 Public Property Get LastSelectedColor() As Long
     LastSelectedColor = m_SelectedColor
+    If m_LastSelectedColorClearAfterRead Then
+        m_SelectedColor = 0
+    End If
 End Property
 
 Public Property Let LastSelectedColor(newColor As Long)
@@ -57,6 +62,10 @@ Public Property Let LastSelectedColor(newColor As Long)
     End If
 End Property
 
+Public Property Let LastSelectedColorClearAfterRead(bClearAfterRead As Boolean)
+    m_LastSelectedColorClearAfterRead = bClearAfterRead
+End Property
+  
 Public Function etyColorOnDblClick(ByRef objForm As Form, sCtrName As String)
     Dim ctrBackColor As Long
     
